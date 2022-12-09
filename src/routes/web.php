@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
     // Login and register
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('/login', [LoginController::class, 'index'])->name('backend.index');
-        Route::post('/', [LoginController::class, 'login'])->name('backend.login');
+        Route::post('/login', [LoginController::class, 'login'])->name('backend.login');
         Route::get('register', [RegisterController::class, 'index'])->name('backend.register');
 
         Route::get('register', [RegisterController::class, 'index'])->name('backend.register');
