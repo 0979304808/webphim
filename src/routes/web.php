@@ -130,6 +130,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
                 Route::post('/create', [CategoryController::class, 'create'])->name('backend.category.create');
                 Route::delete('/delete', [CategoryController::class, 'delete'])->name('backend.category.delete');
                 Route::get('/show', [CategoryController::class, 'show'])->name('backend.category.show');
+                Route::put('/update', [CategoryController::class, 'update'])->name('backend.category.update');
             });
 
             // Comments

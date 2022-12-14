@@ -5,16 +5,16 @@ namespace App\Http\Controllers\BackEnd\Categories;
 use App\Http\Requests\category\CreateCategoryRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Support\Facades\Request;
 use JavaScript;
 use App\Core\ApiResponser;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
      use ApiResponser;
 
     private $category;
-    private $limit = 2;
+    private $limit = 10;
     public function __construct(Category $category)
     {
         $this->category = $category;
@@ -28,7 +28,8 @@ class CategoryController extends Controller
              'categories' => $categories,
              'url_delete_category' => route('backend.category.delete'),
              'url_create_category' => route('backend.category.create'),
-             'url_show_category' => route('backend.category.show')
+             'url_show_category' => route('backend.category.show'),
+             'url_update_category' => route('backend.category.update'),
          ]);
         $view->with('categories', $categories);
         return $view;
@@ -53,6 +54,17 @@ class CategoryController extends Controller
         }
         $result = $this->category->create($data);
         return $this->success($data);
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->id;
+        $name = $request->name;
+        $category = $this->category->where('id', $id)->update([ 'name' => $name, 'slug' => create_slug($name) ]);
+        if ($category){
+            return $this->success(['success' => 'Cập nhật thành công' ], 200);
+        }
+        return $this->success(['error' => 'Cập nhật không thành công' ], 400);
     }
 
     public function delete(){

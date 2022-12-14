@@ -52,7 +52,9 @@
                 {{--                        <button type="submit" class="btn btn-success btn-add-role pull-right">Thêm</button>--}}
                 {{--                    </div>                    --}}
                 <div class="form-group">
-                    <button class="btn btn-success btn-add-category" data-toggle="modal" data-target="#exampleModal">Thêm mới</button>
+                    <button class="btn btn-success btn-add-category" data-toggle="modal" data-target="#exampleModal">
+                        Thêm mới
+                    </button>
                 </div>
                 {{--                </form>--}}
             </div>
@@ -109,21 +111,18 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-{{--                <form action="{{ route('backend.category.create') }}" method="POST" data-parsley-validate--}}
-{{--                      class="form-horizontal form-label-left">--}}
-{{--                    @csrf--}}
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">Tên danh mục<span class="required text-danger">*</span></label>
-                            <input type="text" name="name" id="text-input" required="required" class="form-control"
-                                   placeholder="Tên danh mục"/>
-                        </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Tên danh mục<span class="required text-danger">*</span></label>
+                        <input type="hidden" name="id" id="id"/>
+                        <input type="text" name="name" id="text-input" required="required" class="form-control"
+                               placeholder="Tên danh mục"/>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
-                        <button type="submit" class="btn btn-success btn-save-category pull-right">Lưu</button>
-                    </div>
-{{--                </form>--}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger bg-danger" data-dismiss="modal">Thoát</button>
+                    <button type="submit" class="btn btn-success bg-success btn-save-category pull-right">Lưu</button>
+                </div>
             </div>
         </div>
     </div>
