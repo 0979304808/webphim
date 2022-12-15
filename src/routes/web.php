@@ -3,11 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BackEnd\Auth\LoginController;
 use App\Http\Controllers\BackEnd\Auth\RegisterController;
-use App\Http\Controllers\BackEnd\HomeController;
 use App\Http\Controllers\BackEnd\Posts\PostController;
 use App\Http\Controllers\BackEnd\Profile\ProfileController;
 use App\Http\Controllers\BackEnd\Categories\CategoryController;
-
+use App\Http\Controllers\FrontEnd\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -160,3 +159,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
     });
 
 });
+
+
+// --------------------- FrontEnd -------------------------\
+
+Route::get('/', [HomeController::class, 'home'])->name('frontend.home');
